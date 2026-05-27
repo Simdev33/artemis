@@ -48,35 +48,68 @@ export function ExhibitionsSection() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {featuredExhibitions.map((item, index) => (
-            <motion.article
+            <motion.div
               key={item.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.08 }}
-              className="rounded-2xl overflow-hidden border border-primary/15 bg-card/80 backdrop-blur-sm shadow-lg shadow-primary/5"
+              whileHover={{ y: -8 }}
             >
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src={item.photos[0].image}
-                  alt={item.title}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
-                <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/85 px-3 py-1 text-xs font-medium text-foreground">
-                  <Trophy className="w-3.5 h-3.5 text-primary" />
-                  {item.result}
-                </span>
-              </div>
+              <Link href="/kiallitasok" className="group relative block">
+                <motion.div
+                  className="relative aspect-[4/3] rounded-2xl overflow-hidden border border-primary/15 bg-card/80 backdrop-blur-sm shadow-lg shadow-primary/5"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.35 }}
+                >
+                  <Image
+                    src={item.photos[0].image}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent"
+                    initial={{ opacity: 0 }}
+                    whileHover={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                  />
 
-              <div className="p-5 space-y-1">
-                <h3 className="text-xl font-semibold text-foreground">{item.title}</h3>
-                <p className="text-sm text-primary font-medium">
-                  {item.location} • {item.date}
-                </p>
-              </div>
-            </motion.article>
+                  <span className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full bg-white/90 px-3 py-1 text-xs font-medium text-foreground">
+                    <Trophy className="w-3.5 h-3.5 text-primary" />
+                    {item.result}
+                  </span>
+
+                  <motion.div
+                    className="absolute bottom-0 left-0 right-0 p-6"
+                    initial={{ y: 100, opacity: 0 }}
+                    whileHover={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.35, ease: "easeOut" }}
+                  >
+                    <h3 className="text-2xl font-semibold text-primary-foreground">
+                      {item.title}
+                    </h3>
+                    <p className="text-primary-foreground/80 text-sm">
+                      {item.location} • {item.date}
+                    </p>
+                  </motion.div>
+                </motion.div>
+
+                <motion.div
+                  className="mt-4 space-y-1 px-1"
+                  initial={{ opacity: 1 }}
+                  whileHover={{ opacity: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-primary font-medium">
+                    {item.location} • {item.date}
+                  </p>
+                </motion.div>
+              </Link>
+            </motion.div>
           ))}
         </div>
       </div>

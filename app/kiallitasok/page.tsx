@@ -134,22 +134,29 @@ export default function ExhibitionsPage() {
                   <motion.button
                     key={photo.id}
                     onClick={() => openPhoto(event, photo)}
-                    whileHover={{ y: -4 }}
+                    whileHover={{ y: -6 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group text-left rounded-2xl overflow-hidden border border-primary/15 bg-card focus:outline-none focus:ring-2 focus:ring-primary"
+                    className="group text-left rounded-2xl overflow-hidden border border-primary/15 focus:outline-none focus:ring-2 focus:ring-primary"
                   >
-                    <div className="relative aspect-[4/3]">
+                    <motion.div
+                      className="relative aspect-[4/3]"
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.35 }}
+                    >
                       <Image
                         src={photo.image}
                         alt={photo.caption}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
-                    </div>
-                    <div className="p-4">
-                      <p className="text-sm text-foreground/90">{photo.caption}</p>
-                    </div>
+                      <div className="absolute inset-0 bg-gradient-to-t from-foreground/75 via-foreground/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                      <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-2 opacity-95 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 ease-out">
+                        <p className="text-sm font-medium text-primary-foreground">
+                          {photo.caption}
+                        </p>
+                      </div>
+                    </motion.div>
                   </motion.button>
                 ))}
               </div>

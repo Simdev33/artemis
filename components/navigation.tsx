@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, X, Diamond } from "lucide-react"
+import { Menu, X, Diamond, Facebook, Instagram } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
@@ -12,6 +12,33 @@ const navLinks = [
   { href: "/kiallitasok", label: "Kiállítások" },
   { href: "/#rolunk", label: "Rólunk" },
   { href: "/#kapcsolat", label: "Kapcsolat" },
+]
+
+const socialLinks = [
+  {
+    href: "https://facebook.com",
+    label: "Facebook",
+    icon: <Facebook className="w-4 h-4" />,
+  },
+  {
+    href: "https://instagram.com",
+    label: "Instagram",
+    icon: <Instagram className="w-4 h-4" />,
+  },
+  {
+    href: "https://tiktok.com",
+    label: "TikTok",
+    icon: (
+      <svg
+        viewBox="0 0 24 24"
+        className="w-4 h-4"
+        fill="currentColor"
+        aria-hidden="true"
+      >
+        <path d="M14 3c.2 1.7 1.2 3.2 2.7 4.1 1 .6 2.2 1 3.3 1V11c-1.5 0-3-.4-4.3-1.2v6.6c0 3-2.4 5.4-5.4 5.4S5 19.4 5 16.4 7.4 11 10.4 11c.3 0 .6 0 .8.1v2.9a2.6 2.6 0 0 0-.8-.1c-1.4 0-2.6 1.1-2.6 2.5S9 19 10.4 19s2.6-1.1 2.6-2.5V3h1Z" />
+      </svg>
+    ),
+  },
 ]
 
 export function Navigation() {
@@ -39,21 +66,38 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className={cn(
-                  "text-sm tracking-wide transition-colors hover:text-sky-300",
-                  pathname === link.href
-                    ? "text-sky-300 font-medium"
-                    : "text-white/75"
-                )}
-              >
-                {link.label}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-6">
+            <div className="flex items-center gap-6">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className={cn(
+                    "text-sm tracking-wide transition-colors hover:text-sky-300",
+                    pathname === link.href
+                      ? "text-sky-300 font-medium"
+                      : "text-white/75"
+                  )}
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+            <div className="h-5 w-px bg-white/20" />
+            <div className="flex items-center gap-2">
+              {socialLinks.map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="w-8 h-8 rounded-full bg-white/10 text-sky-200 hover:bg-sky-400 hover:text-white transition-colors flex items-center justify-center"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
@@ -85,6 +129,20 @@ export function Navigation() {
                   {link.label}
                 </Link>
               ))}
+              <div className="flex items-center gap-2 pt-3 border-t border-white/10">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className="w-9 h-9 rounded-full bg-white/10 text-sky-200 hover:bg-sky-400 hover:text-white transition-colors flex items-center justify-center"
+                  >
+                    {social.icon}
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         )}
