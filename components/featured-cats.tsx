@@ -5,24 +5,7 @@ import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { motion } from "framer-motion"
-
-const featuredCats = [
-  {
-    name: "Apollo",
-    color: "Ezüst tabby",
-    image: "/images/cat-1.jpg",
-  },
-  {
-    name: "Luna",
-    color: "Vörös mackerel",
-    image: "/images/cat-2.jpg",
-  },
-  {
-    name: "Artemis",
-    color: "Fehér krém",
-    image: "/images/cat-3.jpg",
-  },
-]
+import { featuredCats, BREED_LABELS } from "@/lib/cats"
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -56,7 +39,13 @@ const cardVariants = {
 
 export function FeaturedCats() {
   return (
-    <section className="py-24 overflow-hidden">
+    <section
+      className="py-24 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, oklch(0.98 0.012 245) 0%, oklch(0.92 0.032 248) 50%, oklch(0.80 0.06 252) 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div 
@@ -78,8 +67,11 @@ export function FeaturedCats() {
             </motion.p>
             <h2 className="text-4xl md:text-5xl font-light text-foreground text-balance">
               Ismerje meg{" "}
-              <span className="font-semibold italic">sztárjainkat</span>
+              <span className="font-semibold italic text-primary">sztárjainkat</span>
             </h2>
+            <p className="text-muted-foreground max-w-lg">
+              Maine Coon és Szibériai vonalaink legkiemeltebb tagjai.
+            </p>
           </motion.div>
           <motion.div variants={headerVariants}>
             <Button asChild variant="outline" className="w-fit group">
@@ -101,7 +93,7 @@ export function FeaturedCats() {
         >
           {featuredCats.map((cat, index) => (
             <motion.div
-              key={cat.name}
+              key={cat.id}
               variants={cardVariants}
               whileHover={{ y: -10 }}
               transition={{ duration: 0.3 }}
@@ -121,11 +113,9 @@ export function FeaturedCats() {
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-110"
                   />
-                  <motion.div 
-                    className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/20 to-transparent"
-                    initial={{ opacity: 0 }}
-                    whileHover={{ opacity: 1 }}
-                    transition={{ duration: 0.3 }}
+                  <div
+                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: "linear-gradient(to top, oklch(0.20 0.10 270 / 0.85) 0%, oklch(0.35 0.10 265 / 0.4) 45%, transparent 100%)" }}
                   />
                   
                   {/* Info Overlay */}
@@ -155,6 +145,7 @@ export function FeaturedCats() {
                   transition={{ duration: 0.3 }}
                 >
                   <h3 className="text-xl font-medium text-foreground">{cat.name}</h3>
+                  <p className="text-sm text-primary font-medium">{BREED_LABELS[cat.breed]}</p>
                   <p className="text-muted-foreground">{cat.color}</p>
                 </motion.div>
 

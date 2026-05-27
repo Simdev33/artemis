@@ -15,8 +15,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Artemis Diamond Cattery | Maine Coon Tenyészet',
-  description: 'Prémium Maine Coon macskák tenyésztése szeretettel és odaadással. Fedezze fel gyönyörű cicáinkat!',
+  title: 'Artemis Diamond Cattery | Maine Coon & Szibériai Tenyészet',
+  description: 'Prémium Maine Coon és Szibériai macskák tenyésztése szeretettel és odaadással. Fedezze fel galériánkat!',
   generator: 'v0.app',
   icons: {
     icon: [

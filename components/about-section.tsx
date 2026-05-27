@@ -59,7 +59,14 @@ const imageVariants = {
 
 export function AboutSection() {
   return (
-    <section id="rolunk" className="py-24 bg-secondary/30 overflow-hidden">
+    <section
+      id="rolunk"
+      className="py-24 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(135deg, oklch(0.98 0.012 245) 0%, oklch(0.93 0.03 248) 52%, oklch(0.83 0.055 252) 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Image */}
@@ -129,7 +136,9 @@ export function AboutSection() {
               </motion.p>
               <h2 className="text-4xl md:text-5xl font-light text-foreground text-balance">
                 Szenvedéllyel a{" "}
-                <span className="font-semibold italic">Maine Coon</span>{" "}
+                <span className="font-semibold italic text-primary">Maine Coon</span>{" "}
+                és{" "}
+                <span className="font-semibold italic text-primary">Szibériai</span>{" "}
                 macskákért
               </h2>
             </motion.div>
@@ -140,15 +149,15 @@ export function AboutSection() {
             >
               <p>
                 Az Artemis Diamond Cattery-t több mint egy évtizede alapítottam, 
-                a Maine Coon fajta iránti mély szeretetemből. Azóta is elkötelezetten 
-                dolgozom azon, hogy egészséges, gyönyörű és kiváló temperamentumú 
-                macskákat neveljek.
+                a prémium macskafajták iránti mély szeretetemből. Maine Coon és 
+                Szibériai vonalainkon egyaránt elkötelezetten dolgozom azon, hogy 
+                egészséges, gyönyörű és kiváló temperamentumú macskákat neveljek.
               </p>
               <p>
                 Tenyészetünkben minden cica a család részeként nő fel, így 
                 kiváló szocializációval és emberbarát természettel kerülnek új 
-                otthonukba. A Maine Coon-ok ismerten &quot;szelíd óriások&quot; - 
-                intelligens, játékos és hűséges társak.
+                otthonukba — legyen szó a Maine Coon &quot;szelíd óriásairól&quot; 
+                vagy a bátor, hűséges szibériai társakról.
               </p>
             </motion.div>
 

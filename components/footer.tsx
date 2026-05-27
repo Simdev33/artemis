@@ -26,7 +26,13 @@ const itemVariants = {
 
 export function Footer() {
   return (
-    <footer className="bg-secondary/50 border-t border-border overflow-hidden">
+    <footer
+      className="border-t border-primary/20 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(180deg, oklch(0.42 0.09 255) 0%, oklch(0.24 0.07 260) 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
         <motion.div 
           className="grid grid-cols-1 md:grid-cols-3 gap-12"
@@ -42,30 +48,31 @@ export function Footer() {
                 whileHover={{ rotate: 360, scale: 1.1 }}
                 transition={{ duration: 0.6 }}
               >
-                <Diamond className="w-8 h-8 text-primary" />
+                <Diamond className="w-8 h-8 text-sky-300" />
               </motion.div>
               <div className="flex flex-col">
-                <span className="text-xl font-semibold tracking-wide text-foreground">
+                <span className="text-xl font-semibold tracking-wide text-white">
                   Artemis Diamond
                 </span>
-                <span className="text-xs tracking-[0.2em] text-muted-foreground uppercase">
+                <span className="text-xs tracking-[0.2em] text-sky-200/70 uppercase">
                   Cattery
                 </span>
               </div>
             </Link>
-            <p className="text-muted-foreground text-sm leading-relaxed max-w-xs">
-              Prémium Maine Coon macskák tenyésztése szeretettel és szakértelemmel, 
-              több mint 10 éve.
+            <p className="text-sky-100/60 text-sm leading-relaxed max-w-xs">
+              Prémium Maine Coon és Szibériai macskák tenyésztése szeretettel 
+              és szakértelemmel, több mint 10 éve.
             </p>
           </motion.div>
 
           {/* Quick Links */}
           <motion.div className="space-y-4" variants={itemVariants}>
-            <h3 className="text-lg font-semibold text-foreground">Gyors linkek</h3>
+            <h3 className="text-lg font-semibold text-white">Gyors linkek</h3>
             <div className="flex flex-col gap-2">
               {[
                 { href: "/", label: "Főoldal" },
                 { href: "/galeria", label: "Galéria" },
+                { href: "/kiallitasok", label: "Kiállítások" },
                 { href: "/#rolunk", label: "Rólunk" },
                 { href: "/#kapcsolat", label: "Kapcsolat" }
               ].map((link) => (
@@ -76,7 +83,7 @@ export function Footer() {
                 >
                   <Link 
                     href={link.href} 
-                    className="text-muted-foreground hover:text-primary transition-colors text-sm inline-block"
+                    className="text-sky-100/60 hover:text-sky-300 transition-colors text-sm inline-block"
                   >
                     {link.label}
                   </Link>
@@ -87,11 +94,11 @@ export function Footer() {
 
           {/* Contact */}
           <motion.div className="space-y-4" variants={itemVariants}>
-            <h3 className="text-lg font-semibold text-foreground">Kapcsolat</h3>
+            <h3 className="text-lg font-semibold text-white">Kapcsolat</h3>
             <div className="flex flex-col gap-3">
               <motion.a 
                 href="mailto:info@artemisdiamond.hu" 
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm group"
+                className="flex items-center gap-2 text-sky-100/60 hover:text-sky-300 transition-colors text-sm group"
                 whileHover={{ x: 5 }}
               >
                 <Mail className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -99,7 +106,7 @@ export function Footer() {
               </motion.a>
               <motion.a 
                 href="tel:+36301234567" 
-                className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors text-sm group"
+                className="flex items-center gap-2 text-sky-100/60 hover:text-sky-300 transition-colors text-sm group"
                 whileHover={{ x: 5 }}
               >
                 <Phone className="w-4 h-4 group-hover:scale-110 transition-transform" />
@@ -116,7 +123,7 @@ export function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-secondary hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="p-2 rounded-full bg-white/10 text-sky-200 hover:bg-sky-400 hover:text-white transition-colors"
                   aria-label={social.label}
                   whileHover={{ scale: 1.2, rotate: 5 }}
                   whileTap={{ scale: 0.9 }}
@@ -129,13 +136,13 @@ export function Footer() {
         </motion.div>
 
         <motion.div 
-          className="mt-12 pt-8 border-t border-border"
+          className="mt-12 pt-8 border-t border-white/10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-center text-muted-foreground text-sm">
+          <p className="text-center text-sky-100/50 text-sm">
             © {new Date().getFullYear()} Artemis Diamond Cattery. Minden jog fenntartva.
           </p>
         </motion.div>

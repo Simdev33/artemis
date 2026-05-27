@@ -77,7 +77,14 @@ export function ContactSection() {
   }
 
   return (
-    <section id="kapcsolat" className="py-24 bg-secondary/30 overflow-hidden">
+    <section
+      id="kapcsolat"
+      className="py-24 overflow-hidden"
+      style={{
+        background:
+          "linear-gradient(180deg, oklch(0.96 0.02 246) 0%, oklch(0.90 0.04 248) 48%, oklch(0.74 0.07 252) 100%)",
+      }}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
         <motion.div 

@@ -65,8 +65,14 @@ export function HeroSection() {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(108deg, oklch(0.99 0.01 245 / 0.68) 0%, oklch(0.95 0.025 248 / 0.42) 38%, oklch(0.30 0.07 258 / 0.34) 100%)",
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-primary/18 via-accent/6 to-transparent" />
       </motion.div>
 
       {/* Decorative Elements */}
@@ -104,9 +110,9 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-sm tracking-wide text-primary">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/40 border border-white/75 text-sm tracking-wide text-white font-medium shadow-md shadow-black/20">
               <Sparkles className="w-4 h-4" />
-              Maine Coon Tenyészet
+              Maine Coon & Szibériai
             </span>
           </motion.div>
 
@@ -117,7 +123,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-none text-foreground">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-light leading-none text-white drop-shadow-[0_3px_18px_rgba(0,0,0,0.55)]">
               <motion.span 
                 className="block"
                 initial={{ opacity: 0, x: -30 }}
@@ -127,7 +133,7 @@ export function HeroSection() {
                 Artemis
               </motion.span>
               <motion.span 
-                className="block font-semibold italic text-primary"
+                className="block font-semibold italic text-sky-200 drop-shadow-[0_2px_12px_rgba(0,0,0,0.45)]"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.8 }}
@@ -135,7 +141,7 @@ export function HeroSection() {
                 Diamond
               </motion.span>
               <motion.span 
-                className="block text-4xl md:text-5xl lg:text-6xl font-light tracking-widest text-muted-foreground"
+                className="block text-4xl md:text-5xl lg:text-6xl font-light tracking-widest text-white/95"
                 initial={{ opacity: 0, x: -30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 1 }}
@@ -147,14 +153,14 @@ export function HeroSection() {
 
           {/* Description */}
           <motion.p 
-            className="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-lg"
+            className="text-lg md:text-xl text-white leading-relaxed max-w-lg drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.2 }}
           >
-            Üdvözöljük a Maine Coon macskák birodalmában. 
-            Szeretettel és szakértelemmel neveljük a világ egyik leggyönyörűbb 
-            macskafajtáját.
+            Üdvözöljük tenyészetünkben — világosból sötétkékbe vezető 
+            eleganciában neveljük Maine Coon és Szibériai macskáinkat, 
+            szeretettel és szakértelemmel.
           </motion.p>
 
           {/* Buttons */}
@@ -164,7 +170,7 @@ export function HeroSection() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1.4 }}
           >
-            <Button asChild size="lg" className="group relative overflow-hidden">
+            <Button asChild size="lg" className="group relative overflow-hidden shadow-lg shadow-black/30">
               <Link href="/galeria">
                 <span className="relative z-10 flex items-center">
                   Fedezze fel cicáinkat
@@ -178,7 +184,7 @@ export function HeroSection() {
                 />
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="group backdrop-blur-sm">
+            <Button asChild variant="outline" size="lg" className="group backdrop-blur-sm border-white/70 bg-white/15 text-white hover:bg-white/25 hover:text-white">
               <Link href="#kapcsolat">
                 <span className="relative">
                   Lépjen kapcsolatba velünk
@@ -205,17 +211,26 @@ export function HeroSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.8 + index * 0.1 }}
                 whileHover={{ scale: 1.05 }}
-                className="cursor-default"
+                className="cursor-default px-1 py-1"
               >
                 <motion.p 
-                  className="text-3xl md:text-4xl font-semibold text-primary"
+                  className="text-3xl md:text-4xl font-semibold text-sky-200"
+                  style={{
+                    WebkitTextStroke: "0.8px rgba(255,255,255,0.55)",
+                    textShadow: "0 2px 10px rgba(0,0,0,0.45)",
+                  }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 2 + index * 0.1 }}
                 >
                   {stat.value}
                 </motion.p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p
+                  className="text-sm text-white/92"
+                  style={{ textShadow: "0 1px 6px rgba(0,0,0,0.45)" }}
+                >
+                  {stat.label}
+                </p>
               </motion.div>
             ))}
           </motion.div>
